@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-unresolved
+require('dotenv').config();
+
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { celebrate, Joi, errors } = require('celebrate');
@@ -16,6 +19,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { auth } = require('./middlewares/auth');
 const { createUser, login } = require('./controllers/users');
 const NotFoundError = require('./errors/NotFoundError');
+
 const {
   URL_REGULAR_EXP,
   INTERNAL_SERVER_ERROR_CODE,
@@ -55,7 +59,8 @@ app.use((req, res, next) => {
   return next();
 });
 
-app.use(requestLogger); // подключаем логгер запросов
+// request logger
+app.use(requestLogger);
 
 // authorization
 app.post('/signin', celebrate({
@@ -84,7 +89,8 @@ app.use('*', auth, (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
 
-app.use(errorLogger); // подключаем логгер ошибок
+// error logger
+app.use(errorLogger);
 
 // celebrate error handler
 app.use(errors());

@@ -20,7 +20,7 @@ const createCard = (req, res, next) => {
 
   Card.create({ name, link, owner: ownerId })
     .then((newCard) => {
-      res.status(CREATED_CODE).send({ data: newCard });
+      res.status(CREATED_CODE).send(newCard);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -70,7 +70,7 @@ const likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(cardId, { $addToSet: { likes: userId } }, { new: true })
     .orFail()
     .then((card) => {
-      res.send({ data: card });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
@@ -90,7 +90,7 @@ const dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(cardId, { $pull: { likes: userId } }, { new: true })
     .orFail()
     .then((card) => {
-      res.send({ data: card });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
