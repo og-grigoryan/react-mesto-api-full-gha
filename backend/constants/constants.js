@@ -13,8 +13,8 @@ const ALLOWED_CORS = [
   'https://mesto.grig.nomoredomainsrocks.ru',
   'http://api.mesto.grig.nomoredomainsrocks.ru',
   'https://api.mesto.grig.nomoredomainsrocks.ru',
-  'http://158.160.99.77',
-  'https://158.160.99.77',
+  'http://51.250.89.190',
+  'https://51.250.89.190',
   'http://localhost:3000',
 ];
 
