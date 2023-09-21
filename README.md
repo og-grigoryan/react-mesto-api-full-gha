@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.99.77
+IP-адрес 158.160.99.77 
 
 Frontend https://mesto.grig.nomoredomainsrocks.ru
 
