@@ -156,9 +156,6 @@ const login = (req, res, next) => {
             return next(new UnauthorizedError('Неправильные почта или пароль'));
           }
 
-          // eslint-disable-next-line max-len
-          // const token = jwt.sign({ _id: user._id }, 'SECRET_KEY', { expiresIn: '7d' }); // HARDCODE SECRET_KEY
-
           const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'SECRET_KEY', { expiresIn: '7d' });
 
           // eslint-disable-next-line consistent-return

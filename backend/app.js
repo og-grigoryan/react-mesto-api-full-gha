@@ -62,6 +62,13 @@ app.use((req, res, next) => {
 // request logger
 app.use(requestLogger);
 
+// server crash test
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 // authorization
 app.post('/signin', celebrate({
   body: Joi.object().keys({
