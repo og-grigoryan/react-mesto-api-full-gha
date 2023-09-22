@@ -29,8 +29,6 @@ const getUserMe = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
         next(new NotFoundError('Передан несуществующий _id пользователя'));
-      } else if (err.name === 'CastError') {
-        next(new BadRequestError('Передан некорректный _id пользователя'));
       } else {
         next(err);
       }
@@ -105,8 +103,6 @@ const updateUserData = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
         next(new NotFoundError('Передан несуществующий _id пользователя'));
-      } else if (err.name === 'CastError') {
-        next(new BadRequestError('Передан некорректный _id пользователя'));
       } else if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при обновлении данных пользователя'));
       } else {
